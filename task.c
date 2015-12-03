@@ -84,6 +84,14 @@ int main(int argc, char* argv[])
 
 
 //create
+void createThread(int k) {
+	int *m = (int *)malloc(sizeof(int));
+	*m = k;
+	int err = pthread_create(&ntid[k], NULL, respond, (void *) m);
+	if (err != 0) {
+		printf("it's impossible to create a thread %s\n", strerror(err));
+	}
+}
 
 //start server
 void startServer(char *port)
